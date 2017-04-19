@@ -1,0 +1,36 @@
+public class Solution {
+    int low, maxLen;
+    
+    public String longestPalindrome(String s) {
+        if(s.length() < 2) return s;
+        
+        for(int i = 0; i < s.length()-1; i++){
+            
+            //odd
+            extendString(i, i, s);
+            
+            //even
+            extendString( i , i+1, s);
+        }
+        
+        return s.substring(low, low + maxLen);
+    }
+    
+    public void extendString( int j, int k, String str){
+        while(j >=0 && k < str.length() && str.charAt(j)==str.charAt(k)){
+        
+            j--;
+            k++;
+            
+        }
+        
+        if(maxLen < k -j -1){
+            
+            low = j+1;
+            maxLen = k -j -1;
+            
+        }
+        
+        return;
+    }
+}
