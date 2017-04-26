@@ -1,0 +1,17 @@
+public class Solution {
+    public int reverse(int x) {
+        int tail = 0, result=0, newresult=0;
+
+        
+        while(x !=0){
+            tail = x%10;
+            x = x/10;
+            newresult = result*10 + tail;
+            if((newresult-tail)/10 !=result){ //check overflow
+                return 0;
+            }
+            result = newresult;
+        }
+        return newresult;
+    }
+}
